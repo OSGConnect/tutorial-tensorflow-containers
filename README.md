@@ -130,6 +130,9 @@ we can by the `/job:localhost/replica:0/task:0/device:CPU:0` line, the code ran
 on one of the CPUs. When testing your own code like this, take note of how much
 memory, disk and runtime is required - it is needed in the next step.
 
+Once you are done with testing, use `CTRL+D` or run `exit` to exit out of 
+the container. Note that you can _not_ submit jobs from within the container.
+
 
 ## Running a CPU job
 
