@@ -31,8 +31,16 @@ section. Here we will just provide an overview of how you could take something
 like an existing Tensorflow image provided by OSG staff, and extend it by
 adding your own modules to it. Let's assume you like Tensorflow version
 2.3. The definition of this image can be found in Github: [Dockerfile](https://github.com/opensciencegrid/osgvo-tensorflow/blob/2.3/Dockerfile). You don't really need to 
-understand how an image was built in order to use it, you can just
-inherit directly from the image, which is available on DockerHub [here](https://hub.docker.com/r/opensciencegrid/tensorflow).
+understand how an image was built in order to use it. As described in
+the containers documentation, make sure the HTCondor submit file has:
+
+
+    Requirements = HAS_SINGULARITY == TRUE
+    +SingularityImage = "/cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow:2.3"
+
+
+If you want to extend an existing image, you can just inherit from the 
+parent image available on DockerHub [here](https://hub.docker.com/r/opensciencegrid/tensorflow).
 For example, if you just need some additional Python packages, your
 new Dockerfile could look like:
 
@@ -184,8 +192,7 @@ we want the job to run in a container. `cpu-job.submit` contains:
 And job-wrapper.sh:
 
 
-    #!binrbash
-r patterns. It is a little-known fact that checksums can (and typically should) be designed to reliably catch specific errors. A good checksum is designed to protect against errors that it will actually encounter. So the first step in this project is to collect information about the kinds of transmission errors currently happening in the Internet for a comprehensive study. Second, today's file transfer protocols, if they find a file has been corrupted in transit, simply discard the file and transfer it again. In a world in which the file is huge (tens of terabytes or even petabytes long), that's a tremendous waste. Rather, the file transfer protocol should seek to repair the corrupted parts of the file. As the project collects data about errors, it will also design a new file transfer protocol that can incrementally verify and repair files.
+    #!/bin/bash
     
     set -e
     
