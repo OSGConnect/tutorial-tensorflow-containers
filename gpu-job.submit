@@ -18,7 +18,7 @@ Executable = job-wrapper.sh
 Arguments = 
 
 # Inputs/outputs - in this case we just need our python code.
-# If you leave transfer_output_files, all generated files comes back
+# If you leave out transfer_output_files, all generated files comes back
 transfer_input_files = test.py
 #transfer_output_files = 
 
@@ -37,7 +37,7 @@ Log = $(Cluster).log
 # Periodically retry the jobs every 1 hour, up to a maximum of 5 retries.
 #periodic_release =  (NumJobStarts < 5) && ((CurrentTime - EnteredCurrentStatus) > 60*60)
 
-# queueu is the "start button" - it launches any jobs that have been
+# queue is the "start button" - it launches any jobs that have been
 # specified thus far.
 queue 1
 
