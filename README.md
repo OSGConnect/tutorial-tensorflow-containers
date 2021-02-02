@@ -273,3 +273,8 @@ the `.out` file for a line stating the code was run under a GPU. Something simil
 to:
 
 
+    2021-02-02 23:25:19.022467: I tensorflow/core/common_runtime/eager/execute.cc:611] Executing op MatMul in device /job:localhost/replica:0/task:0/device:GPU:0    
+
+
+The `GPU:0` parts shows that a GPU was found and used for the computation.
+
