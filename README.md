@@ -78,6 +78,11 @@ This is the image in its expanded form - something we can execute with Singulari
 
 ## Testing the container on the submit host
 
+First, download the files contained in this tutorial to the login node using the `tutorial` command and `cd` into the tutorial directory that is created:
+
+    tutorial tensorflow-containers
+    cd tutorial-tensorflow-containers
+
 Before submitting jobs to the OSG, it is always a good idea to test your code
 so that you understand runtime requirements. The containers can be tested
 on the OSGConnect submit hosts with `singularity shell`, which will drop you
@@ -106,7 +111,7 @@ Tensorflow will warn you that no GPUs where found. This is expected as we
 do not have GPUs attached to our login nodes, and it is fine as Tensorflow
 works fine with regular CPUs (slower of course).
 
-Exit out of Python3 with `CTRL+D` and then we can a Tensorflow testcode
+Exit out of Python3 with `CTRL+D` and then we can run a Tensorflow testcode
 which can be found in this tutorial:
 
     $ python3 test.py 
@@ -126,7 +131,7 @@ which can be found in this tutorial:
      [49. 64.]], shape=(2, 2), dtype=float32)
 
 We will again see a bunch of warnings regarding GPUs not being available, but as
-we can by the `/job:localhost/replica:0/task:0/device:CPU:0` line, the code ran
+we can see by the `/job:localhost/replica:0/task:0/device:CPU:0` line, the code ran
 on one of the CPUs. When testing your own code like this, take note of how much
 memory, disk and runtime is required - it is needed in the next step.
 
@@ -140,7 +145,7 @@ If Tensorflow can run on GPUs, you might be wondering why we might want to run
 it on slower CPUs? One reason is that CPUs are plentiful while GPUs are still
 somewhat scarce. If you have a lot of shorter Tensorflow jobs, they might 
 complete faster on available CPUs, rather than wait in the queue for the
-faster, less avaialble, GPUs. The good news is that Tensorflow code should
+faster, less available, GPUs. The good news is that Tensorflow code should
 work in both enviroments automatically, so if your code runs too slow on CPUs,
 moving to GPUs should be easy.
 
@@ -168,7 +173,7 @@ we want the job to run in a container. `cpu-job.submit` contains:
     Arguments = 
     
     # Inputs/outputs - in this case we just need our python code.
-    # If you leave transfer_output_files, all generated files comes back
+    # If you leave out transfer_output_files, all generated files comes back
     transfer_input_files = test.py
     #transfer_output_files = 
     
@@ -187,7 +192,7 @@ we want the job to run in a container. `cpu-job.submit` contains:
     # Periodically retry the jobs every 1 hour, up to a maximum of 5 retries.
     #periodic_release =  (NumJobStarts < 5) && ((CurrentTime - EnteredCurrentStatus) > 60*60)
     
-    # queueu is the "start button" - it launches any jobs that have been
+    # queue is the "start button" - it launches any jobs that have been
     # specified thus far.
     queue 1
 
@@ -239,7 +244,7 @@ in `gpu-job.submit` with the contents:
     Arguments = 
     
     # Inputs/outputs - in this case we just need our python code.
-    # If you leave transfer_output_files, all generated files comes back
+    # If you leave out transfer_output_files, all generated files comes back
     transfer_input_files = test.py
     #transfer_output_files = 
     
@@ -258,7 +263,7 @@ in `gpu-job.submit` with the contents:
     # Periodically retry the jobs every 1 hour, up to a maximum of 5 retries.
     #periodic_release =  (NumJobStarts < 5) && ((CurrentTime - EnteredCurrentStatus) > 60*60)
     
-    # queueu is the "start button" - it launches any jobs that have been
+    # queue is the "start button" - it launches any jobs that have been
     # specified thus far.
     queue 1
 
