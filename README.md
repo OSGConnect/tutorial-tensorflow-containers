@@ -1,7 +1,9 @@
-[title]: - "Working with Tensorflow, GPUs, and containers"
-[TOC]
+---
+ospool:
+    path: "software_examples/machine_learning/tutorial-tensorflow-containers/README.md"
+---
 
-## Overview
+# "Working with Tensorflow, GPUs, and containers"
 
 In this tutorial, we explore GPUs and containers on OSG, using the popular Tensorflow
 sofware package. Tensorflow is a good example here as the software is too complex to 
