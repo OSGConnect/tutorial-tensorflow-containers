@@ -1,16 +1,16 @@
 universe = vanilla
 
-# Job requirements - ensure we are running on a Singularity enabled
+# Job requirements - ensure we are running on a newer GPU
 # node and have enough resources to execute our code
 # Tensorflow also requires AVX instruction set
-Requirements = HAS_SINGULARITY == True && HAS_AVX2 == True && OSG_HOST_KERNEL_VERSION >= 31000
+Requirements = GPUs_Capability >= 8.0 && GPUs_DriverVersion > 11.0 && HAS_AVX2 == True && OSG_HOST_KERNEL_VERSION >= 31000
 request_cpus = 1
 request_gpus = 1
-request_memory = 1 GB
+request_memory = 8 GB
 request_disk = 1 GB
 
 # Container image to run the job in
-+SingularityImage = "/cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow-gpu:2.3-cuda-10.1/"
++SingularityImage = "/cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow-gpu:2.2-cuda-10.1/"
 
 # Executable is the program your job will run It's often useful
 # to create a shell script to "wrap" your actual work.
