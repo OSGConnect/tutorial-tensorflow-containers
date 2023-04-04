@@ -3,7 +3,7 @@ ospool:
     path: "software_examples/machine_learning/tutorial-tensorflow-containers/README.md"
 ---
 
-# "Working with Tensorflow, GPUs, and containers"
+# Working with Tensorflow, GPUs, and containers
 
 In this tutorial, we explore GPUs and containers on OSG, using the popular Tensorflow
 sofware package. Tensorflow is a good example here as the software is too complex to 
@@ -80,9 +80,9 @@ This is the image in its expanded form - something we can execute with Singulari
 
 ## Testing the container on the submit host
 
-First, download the files contained in this tutorial to the login node using the `tutorial` command and `cd` into the tutorial directory that is created:
+First, download the files contained in this tutorial to the login node using the `git clone` command and `cd` into the tutorial directory that is created:
 
-    tutorial tensorflow-containers
+    git clone https://github.com/OSGConnect/tutorial-tensorflow-containers
     cd tutorial-tensorflow-containers
 
 Before submitting jobs to the OSG, it is always a good idea to test your code
