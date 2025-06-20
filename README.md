@@ -37,8 +37,7 @@ understand how an image was built in order to use it. As described in
 the containers documentation, make sure the HTCondor submit file has:
 
 
-    Requirements = HAS_SINGULARITY == TRUE
-    +SingularityImage = "/cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow:2.3"
+    container_image = /cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow:2.3
 
 
 If you want to extend an existing image, you can just inherit from the 
@@ -167,7 +166,7 @@ we want the job to run in a container. `cpu-job.submit` contains:
     request_disk = 1 GB
     
     # Container image to run the job in
-    +SingularityImage = "/cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow:2.3"
+    container_image = /cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow:2.3
     
     # Executable is the program your job will run It's often useful
     # to create a shell script to "wrap" your actual work.
@@ -225,7 +224,7 @@ is done, check the files named after the job id for the outputs.
 
 When moving the job to be run on a GPU, all we have to do is update two lines
 in the submit file: set `request_gpus` to `1` and specify a GPU enabled 
-container image for `+SingularityImage`. The updated submit file can be found
+container image for `container_image`. The updated submit file can be found
 in `gpu-job.submit` with the contents:
 
 
@@ -241,7 +240,7 @@ in `gpu-job.submit` with the contents:
     request_disk = 1 GB
     
     # Container image to run the job in
-    +SingularityImage = "/cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow-gpu:2.3"
+    container_image = /cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow-gpu:2.3
     
     # Executable is the program your job will run It's often useful
     # to create a shell script to "wrap" your actual work.
